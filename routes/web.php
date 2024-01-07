@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImportExportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(ImportExportController::class)->group(function(){
+    Route::get('import_export', 'importExport');
+    Route::post('import', 'import')->name('import');
+    Route::get('export', 'export')->name('export');
 });
